@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brisbane Trip Checklist 🇦🇺</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap');
+  * { font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes popIn { 0% { opacity: 0; transform: scale(0.5); } 60% { opacity: 1; transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes popOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.5); } }
+  @keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes progressFill { from { width: 0; } }
+  @keyframes checkmark { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.3); } 100% { transform: scale(1); opacity: 1; } }
+  .anim-fade-up { animation: fadeInUp 0.5s ease-out both; }
+  .anim-fade-left { animation: fadeInLeft 0.3s ease-out both; }
+  .anim-fade-right { animation: fadeInRight 0.3s ease-out both; }
+  .anim-pop { animation: popIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .anim-progress { animation: progressFill 0.8s ease-out both; }
+  .bounce-0 { animation: bounce-slow 1s ease-in-out infinite; animation-delay: 0ms; }
+  .bounce-1 { animation: bounce-slow 1s ease-in-out infinite; animation-delay: 100ms; }
+  .bounce-2 { animation: bounce-slow 1s ease-in-out infinite; animation-delay: 200ms; }
+  .check-icon { animation: checkmark 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .gradient-text { background: linear-gradient(to right, #f97316, #ec4899, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gradient-text-orange-pink { background: linear-gradient(to right, #f97316, #ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tab-btn { transition: all 0.3s ease; }
+  .tab-btn:hover:not(.active) { background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .tab-btn.active { transform: scale(1.05); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+  .check-item { transition: all 0.2s ease; }
+  .check-item:hover:not(.checked) { border-color: rgba(249, 115, 22, 0.3); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .check-item:active:not(.checked) { transform: scale(0.98); }
+  .checkbox-circle { transition: all 0.2s ease; }
+  .checkbox-circle.checked { background: linear-gradient(to bottom right, #4ade80, #10b981); border-color: #10b981; }
+  .celebration { animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .celebration.hide { animation: popOut 0.3s ease-in both; }
+  .dont-forget-badge { background: linear-gradient(to right, #fbbf24, #f97316); }
+  .dont-forget-box { background: linear-gradient(to bottom right, rgba(254, 243, 199, 0.8), rgba(255, 237, 213, 0.8)); border: 2px solid rgba(252, 211, 77, 0.6); }
+  .delay-1 { animation-delay: 0.05s; } .delay-2 { animation-delay: 0.1s; } .delay-3 { animation-delay: 0.15s; }
+  .delay-4 { animation-delay: 0.2s; } .delay-5 { animation-delay: 0.25s; } .delay-6 { animation-delay: 0.3s; }
+  .delay-7 { animation-delay: 0.35s; } .delay-8 { animation-delay: 0.4s; } .delay-9 { animation-delay: 0.45s; }
+  .delay-10 { animation-delay: 0.5s; } .delay-11 { animation-delay: 0.55s; } .delay-12 { animation-delay: 0.6s; }
+  .delay-13 { animation-delay: 0.65s; } .delay-14 { animation-delay: 0.7s; } .delay-15 { animation-delay: 0.75s; }
+  .tab-content { animation: fadeInRight 0.3s ease-out both; }
+</style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-sky-100 via-amber-50 to-pink-100">
+<div id="celebration" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden">
+  <div class="celebration bg-white/90 backdrop-blur-md rounded-3xl px-10 py-8 shadow-2xl border-4 border-yellow-400 text-center">
+    <div class="text-6xl mb-3 flex justify-center gap-2">
+      <span class="bounce-0">🎉</span><span class="bounce-1">⭐</span><span class="bounce-2">🎉</span>
+    </div>
+    <div class="text-2xl font-bold text-gray-800">All done!</div>
+    <div class="text-gray-500 mt-1">Great job, adventurer! 🌟</div>
+  </div>
+</div>
+<main class="max-w-3xl mx-auto px-4 py-6 md:py-10 space-y-6">
+  <div class="text-center anim-fade-up">
+    <div class="inline-flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-full px-4 py-1.5 mb-4 shadow-sm border border-white">
+      <span class="text-xl">🇦🇺</span>
+      <span class="text-sm font-semibold text-gray-700">Brisbane Adventure</span>
+    </div>
+    <h1 class="text-3xl md:text-4xl font-black text-gray-800 tracking-tight mb-2">
+      My <span class="gradient-text">Trip Checklist</span>
+    </h1>
+    <p class="text-gray-500 text-sm md:text-base">2 months of fun in sunny Brisbane! ☀️</p>
+  </div>
+  <div class="bg-white rounded-2xl shadow-lg border border-white p-5 anim-fade-up delay-1">
+    <div class="flex items-center justify-between mb-3">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span class="font-bold text-gray-800">Overall Progress</span>
+      </div>
+      <span id="totalProgressText" class="text-lg font-black gradient-text-orange-pink">0%</span>
+    </div>
+    <div class="relative h-4 bg-gray-100 rounded-full overflow-hidden">
+      <div id="totalProgressBar" class="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-400 via-pink-500 to-violet-500 rounded-full anim-progress" style="width: 0%"></div>
+    </div>
+    <div class="mt-3 text-xs text-gray-500 text-center">
+      <span id="totalDoneCount">0</span> of <span id="totalCount">0</span> items complete
+    </div>
+  </div>
+  <div class="-mx-4 px-4 overflow-x-auto scrollbar-hide anim-fade-up delay-2">
+    <div id="tabBar" class="flex gap-2 min-w-max pb-1"></div>
+  </div>
+  <div id="tabContent" class="rounded-3xl p-5 md:p-6 shadow-lg border-2 border-white"></div>
+  <div class="text-center text-xs text-gray-500 pb-6 anim-fade-up delay-5">
+    <div class="flex items-center justify-center gap-1">
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2"/></svg>
+      <span>Have an amazing Brisbane adventure!</span><span>🦘</span>
+    </div>
+  </div>
+</main>
+<script>
+const TABS = [{"key":"packing","label":"Packing","emoji":"🎒","color":"from-orange-400 to-amber-500","bgColor":"bg-orange-50"},{"key":"bookings","label":"Bookings","emoji":"✅","color":"from-emerald-400 to-green-500","bgColor":"bg-emerald-50"},{"key":"bucketlist","label":"Bucket List","emoji":"🎯","color":"from-pink-400 to-rose-500","bgColor":"bg-pink-50"},{"key":"food","label":"Food & Gifts","emoji":"🍔","color":"from-amber-400 to-yellow-500","bgColor":"bg-amber-50"},{"key":"reminders","label":"Reminders","emoji":"💡","color":"from-violet-400 to-purple-500","bgColor":"bg-violet-50"}];
+const CHECKLIST_ITEMS = [{"id":"p1","text":"SPF50+ roll-on sunscreen","emoji":"🧴","tab":"packing","group":"Don't Forget!","groupEmoji":"☀️"},{"id":"p2","text":"Wide-brim sun hat","emoji":"👒","tab":"packing","group":"Don't Forget!","groupEmoji":"☀️"},{"id":"p3","text":"7-10 casual t-shirts","emoji":"👕","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p4","text":"5 pairs of shorts","emoji":"🩳","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p5","text":"1 pair of long pants / jeans","emoji":"👖","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p6","text":"Light hoodie or jacket","emoji":"🧥","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p7","text":"Rash vest","emoji":"🎽","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p8","text":"2 pairs of board shorts / swimmers","emoji":"🩲","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p9","text":"2 sets of pyjamas","emoji":"😴","tab":"packing","group":"Clothes","groupEmoji":"👕"},{"id":"p10","text":"7+ pairs of underwear","emoji":"🩲","tab":"packing","group":"Underwear & Socks","groupEmoji":"🩲"},{"id":"p11","text":"5+ pairs of socks","emoji":"🧦","tab":"packing","group":"Underwear & Socks","groupEmoji":"🩲"},{"id":"p12","text":"White sneakers / runners","emoji":"👟","tab":"packing","group":"Shoes","groupEmoji":"👟"},{"id":"p13","text":"Sandals / thongs (flip-flops)","emoji":"🩴","tab":"packing","group":"Shoes","groupEmoji":"👟"},{"id":"p14","text":"Tablet + charger","emoji":"📱","tab":"packing","group":"Games","groupEmoji":"🎮"},{"id":"p15","text":"Travel card games (e.g. Uno)","emoji":"🃏","tab":"packing","group":"Games","groupEmoji":"🎮"},{"id":"p16","text":"Favourite small toy / comfort item","emoji":"🧸","tab":"packing","group":"Games","groupEmoji":"🎮"},{"id":"p17","text":"Fidget toy / stress ball","emoji":"🌀","tab":"packing","group":"Games","groupEmoji":"🎮"},{"id":"p18","text":"Portable LED desk lamp (for homework)","emoji":"💡","tab":"packing","group":"Lamp","groupEmoji":"💡"},{"id":"p19","text":"Night light (for bedroom)","emoji":"🌙","tab":"packing","group":"Lamp","groupEmoji":"💡"},{"id":"p20","text":"USB charging cable","emoji":"🔌","tab":"packing","group":"Lamp","groupEmoji":"💡"},{"id":"p21","text":"School backpack","emoji":"🎒","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p22","text":"Homework folder","emoji":"📁","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p23","text":"Insulated lunch box","emoji":"🍱","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p24","text":"Reusable drink bottle","emoji":"🍼","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p25","text":"Library bag","emoji":"👜","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p26","text":"Art smock","emoji":"🎨","tab":"packing","group":"Homework","groupEmoji":"📚"},{"id":"p27","text":"2-3 favourite reading books","emoji":"📚","tab":"packing","group":"Books","groupEmoji":"📖"},{"id":"p28","text":"1 activity / puzzle book","emoji":"🧩","tab":"packing","group":"Books","groupEmoji":"📖"},{"id":"p29","text":"Colouring book","emoji":"🎨","tab":"packing","group":"Books","groupEmoji":"📖"},{"id":"p30","text":"School reading book","emoji":"📖","tab":"packing","group":"Books","groupEmoji":"📖"},{"id":"p31","text":"Pencil case","emoji":"🎒","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p32","text":"Lead pencils (HB, 12 pack)","emoji":"✏️","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p33","text":"Eraser + pencil sharpener","emoji":"🧽","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p34","text":"30cm ruler","emoji":"📏","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p35","text":"Coloured pencils","emoji":"🖍️","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p36","text":"Glue stick","emoji":"🖇️","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p37","text":"Blunt-tip scissors","emoji":"✂️","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"p38","text":"Name labels for everything","emoji":"🏷️","tab":"packing","group":"Pencils","groupEmoji":"✏️"},{"id":"b1","text":"School enrollment confirmed","emoji":"✅","tab":"bookings"},{"id":"b2","text":"2-month long stay accommodation","emoji":"🏠","tab":"bookings"},{"id":"b3","text":"Airport transfer pick-up","emoji":"🚗","tab":"bookings"},{"id":"b4","text":"Lone Pine Koala Sanctuary tickets","emoji":"🐨","tab":"bookings"},{"id":"b5","text":"Moreton Island day trip","emoji":"🏝️","tab":"bookings"},{"id":"b6","text":"North Stradbroke Island day trip","emoji":"🐋","tab":"bookings"},{"id":"b7","text":"Gold Coast theme park","emoji":"🎢","tab":"bookings"},{"id":"bl1","text":"South Bank Parklands & Streets Beach","emoji":"🏖️","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️","imageUrl":"/spark/app/app_179d312nbws/runtime/api/v1/storage/object/bucket_aadki5smpykiu_static/static%2Faadki5nzczals_ve_miaoda"},{"id":"bl2","text":"Queensland Museum (dinosaur fossils!)","emoji":"🦕","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️"},{"id":"bl3","text":"CityCat river ferry ride","emoji":"⛴️","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️"},{"id":"bl4","text":"Kangaroo Point Cliffs sunset","emoji":"🌅","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️"},{"id":"bl5","text":"City Botanic Gardens","emoji":"🌿","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️"},{"id":"bl6","text":"Howard Smith Wharves waterfront","emoji":"⚓","tab":"bucketlist","group":"City Riverside Spots","groupEmoji":"🏙️"},{"id":"bl7","text":"Eat Street Northshore weekend market","emoji":"🍜","tab":"bucketlist","group":"Markets & Fun","groupEmoji":"🎪"},{"id":"bl8","text":"Fortitude Valley & Winn Lane vintage shops","emoji":"🛍️","tab":"bucketlist","group":"Markets & Fun","groupEmoji":"🎪"},{"id":"bl9","text":"West End Saturday Markets","emoji":"🎪","tab":"bucketlist","group":"Markets & Fun","groupEmoji":"🎪"},{"id":"bl10","text":"Lone Pine Koala Sanctuary (hold a koala!)","emoji":"🐨","tab":"bucketlist","group":"Wildlife & Nature","groupEmoji":"🐨","imageUrl":"/spark/app/app_179d312nbws/runtime/api/v1/storage/object/bucket_aadki5smpykiu_static/static%2Faadki5nc2zwdu_ve_miaoda"},{"id":"bl11","text":"Mount Coot-tha lookout + botanic gardens","emoji":"⛰️","tab":"bucketlist","group":"Wildlife & Nature","groupEmoji":"🐨"},{"id":"bl12","text":"Tamborine Mountain Treetop Challenge (zip lining!)","emoji":"🌳","tab":"bucketlist","group":"Adventure Day Trips","groupEmoji":"🌳"},{"id":"bl13","text":"Gold Coast Surfers Paradise","emoji":"🏖️","tab":"bucketlist","group":"Adventure Day Trips","groupEmoji":"🌳","imageUrl":"/spark/app/app_179d312nbws/runtime/api/v1/storage/object/bucket_aadki5smpykiu_static/static%2Faadki5o7ckges_ve_miaoda"},{"id":"bl14","text":"Gold Coast hinterland waterfalls","emoji":"💧","tab":"bucketlist","group":"Adventure Day Trips","groupEmoji":"🌳"},{"id":"bl15","text":"Gold Coast theme park (Dreamworld / Sea World)","emoji":"🎢","tab":"bucketlist","group":"Adventure Day Trips","groupEmoji":"🌳"},{"id":"f1","text":"Aussie meat pie","emoji":"🥧","tab":"food","group":"Local Food to Try","groupEmoji":"🍔","imageUrl":"/spark/app/app_179d312nbws/runtime/api/v1/storage/object/bucket_aadki5smpykiu_static/static%2Faadki5nak4idu_ve_miaoda"},{"id":"f2","text":"Flat white coffee (for mum/dad)","emoji":"☕","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f3","text":"Fish and chips by the beach","emoji":"🐟","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f4","text":"Lamington cake","emoji":"🍰","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f5","text":"Tim Tam chocolate biscuits","emoji":"🍪","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f6","text":"Fairy bread","emoji":"🍞","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f7","text":"Milo drink","emoji":"🥛","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f8","text":"Pavlova","emoji":"🍮","tab":"food","group":"Local Food to Try","groupEmoji":"🍔"},{"id":"f9","text":"Australian macadamia nuts","emoji":"🥜","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁"},{"id":"f10","text":"Koala / kangaroo plush toy","emoji":"🧸","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁","imageUrl":"/spark/app/app_179d312nbws/runtime/api/v1/storage/object/bucket_aadki5smpykiu_static/static%2Faadki5mgafcos_ve_miaoda"},{"id":"f11","text":"Boomerang","emoji":"🪃","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁"},{"id":"f12","text":"Small Aboriginal art","emoji":"🎨","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁"},{"id":"f13","text":"Australian animal stickers","emoji":"🦘","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁"},{"id":"f14","text":"Queensland souvenir magnet","emoji":"🧲","tab":"food","group":"Souvenirs to Buy","groupEmoji":"🎁"},{"id":"r1","text":"Slip, Slop, Slap every day!","emoji":"☀️","tab":"reminders"},{"id":"r2","text":"Reapply sunscreen every 2 hours","emoji":"🧴","tab":"reminders"},{"id":"r3","text":"Bring hat to school — no hat = no play","emoji":"🎩","tab":"reminders"},{"id":"r4","text":"Save emergency number: 000","emoji":"🚨","tab":"reminders"},{"id":"r5","text":"Bring reusable bag for shopping","emoji":"🛍️","tab":"reminders"},{"id":"r6","text":"Drink lots of water — it's hot!","emoji":"💧","tab":"reminders"},{"id":"r7","text":"Say \"G'day\" to make new friends","emoji":"👋","tab":"reminders"},{"id":"r8","text":"Try Vegemite (just a little bit!)","emoji":"🥪","tab":"reminders"}];
+const INITIAL_CHECKED = [];
+const STORAGE_KEY = 'brisbane-checklist-standalone';
+let activeTab = 'packing';
+let checkedIds = new Set(INITIAL_CHECKED);
+try { const s = localStorage.getItem(STORAGE_KEY); if (s) checkedIds = new Set(JSON.parse(s)); } catch(e) {}
+function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...checkedIds])); } catch(e) {} }
+function getTabItems(k) { return CHECKLIST_ITEMS.filter(i => i.tab === k); }
+function getGroupedItems(k) {
+  const items = getTabItems(k); const groups = {}; const ungrouped = [];
+  items.forEach(item => { if (item.group) { if (!groups[item.group]) groups[item.group] = { emoji: item.groupEmoji, items: [] }; groups[item.group].items.push(item); } else ungrouped.push(item); });
+  return { groups, ungrouped };
+}
+function getTabProgress(k) { const items = getTabItems(k); if (!items.length) return 0; return Math.round((items.filter(i => checkedIds.has(i.id)).length / items.length) * 100); }
+function getTotalProgress() { return Math.round((CHECKLIST_ITEMS.filter(i => checkedIds.has(i.id)).length / CHECKLIST_ITEMS.length) * 100); }
+function isTabComplete(k) { const items = getTabItems(k); return items.length > 0 && items.every(i => checkedIds.has(i.id)); }
+function renderTabBar() {
+  const bar = document.getElementById('tabBar'); bar.innerHTML = '';
+  TABS.forEach(tab => {
+    const isActive = tab.key === activeTab;
+    const ti = getTabItems(tab.key); const td = ti.filter(i => checkedIds.has(i.id)).length;
+    const allDone = ti.length > 0 && td === ti.length;
+    const btn = document.createElement('button');
+    btn.className = 'tab-btn relative flex flex-col items-center gap-1 px-4 py-3 rounded-2xl ' + (isActive ? 'active bg-gradient-to-br ' + tab.color + ' text-white shadow-lg' : 'bg-white/80 text-gray-800');
+    btn.innerHTML = '<span class="text-2xl">' + tab.emoji + '</span><span class="text-xs font-bold whitespace-nowrap">' + tab.label + '</span>' + (allDone ? '<span class="absolute -top-1 -right-1 bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px] shadow-md">✓</span>' : '');
+    btn.addEventListener('click', () => switchTab(tab.key));
+    bar.appendChild(btn);
+  });
+}
+function renderItemRow(item, delay) {
+  const checked = checkedIds.has(item.id);
+  const dc = 'delay-' + Math.min(Math.round(delay / 0.05) + 1, 15);
+  return '<button data-id="' + item.id + '" class="check-item anim-fade-left ' + dc + ' w-full flex items-center gap-3 p-3 md:p-4 rounded-2xl text-left ' + (checked ? 'checked bg-white/50 border-2 border-green-300' : 'bg-white border-2 border-white') + '">' +
+    '<div class="checkbox-circle shrink-0 w-7 h-7 rounded-full border-2 flex items-center justify-center ' + (checked ? 'checked' : 'bg-white border-gray-300') + '">' +
+    (checked ? '<svg class="w-4 h-4 text-white check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : '') +
+    '</div>' +
+    '<span class="text-2xl md:text-3xl ' + (checked ? 'grayscale opacity-60' : '') + ' transition-all duration-200">' + item.emoji + '</span>' +
+    '<span class="flex-1 text-sm md:text-base font-semibold ' + (checked ? 'line-through text-gray-400' : 'text-gray-800') + ' transition-all duration-200">' + item.text + '</span>' +
+    '</button>';
+}
+function renderTabContent() {
+  const tabConfig = TABS.find(t => t.key === activeTab);
+  const container = document.getElementById('tabContent');
+  const tabItems = getTabItems(activeTab);
+  const { groups, ungrouped } = getGroupedItems(activeTab);
+  const progress = getTabProgress(activeTab);
+  const doneCount = tabItems.filter(i => checkedIds.has(i.id)).length;
+  container.className = 'tab-content rounded-3xl p-5 md:p-6 shadow-lg border-2 border-white ' + tabConfig.bgColor;
+  let html = '';
+  html += '<div class="flex items-center justify-between mb-5">' +
+    '<div class="flex items-center gap-3"><div class="w-12 h-12 rounded-2xl bg-gradient-to-br ' + tabConfig.color + ' flex items-center justify-center text-2xl shadow-md">' + tabConfig.emoji + '</div>' +
+    '<div><h2 class="text-xl font-black text-gray-800">' + tabConfig.label + '</h2><p class="text-xs text-gray-500">' + doneCount + ' / ' + tabItems.length + ' done</p></div></div>' +
+    '<button id="clearTabBtn" class="flex items-center gap-1.5 bg-white/80 border border-white hover:bg-white text-gray-800 rounded-xl px-3 py-2 text-xs font-semibold transition-all">' +
+    '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>' +
+    '<span>Clear All</span></button></div>';
+  html += '<div class="mb-5"><div class="h-3 bg-white/60 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r ' + tabConfig.color + ' rounded-full anim-progress" style="width:' + progress + '%"></div></div></div>';
+  html += '<div class="space-y-4">';
+  if (ungrouped.length > 0) { html += '<div class="space-y-2">'; ungrouped.forEach((it, i) => { html += renderItemRow(it, i * 0.03); }); html += '</div>'; }
+  let gi = 0;
+  for (const [gn, gd] of Object.entries(groups)) {
+    const isDF = gn === "Don't Forget!";
+    html += '<div class="space-y-2">';
+    if (isDF) {
+      html += '<div class="flex items-center gap-2 pt-1"><div class="flex items-center gap-2 dont-forget-badge text-white px-3 py-1.5 rounded-full shadow-md"><span class="text-base">' + gd.emoji + '</span><h3 class="text-xs font-black uppercase tracking-wide">' + gn + '</h3><span class="text-base">☀️</span></div></div><div class="space-y-2 p-3 rounded-2xl dont-forget-box">';
+    } else {
+      html += '<div class="flex items-center gap-2 pt-2"><span class="text-lg">' + gd.emoji + '</span><h3 class="text-sm font-bold text-gray-600 uppercase tracking-wide">' + gn + '</h3></div><div class="space-y-2">';
+    }
+    gd.items.forEach((it, i) => { html += renderItemRow(it, (gi * 0.05) + (i * 0.03)); });
+    html += '</div></div>'; gi++;
+  }
+  html += '</div>';
+  container.innerHTML = html;
+  document.getElementById('clearTabBtn').addEventListener('click', clearTab);
+  document.querySelectorAll('.check-item').forEach(el => { el.addEventListener('click', () => toggleItem(el.dataset.id)); });
+}
+function renderOverallProgress() {
+  const p = getTotalProgress();
+  const d = CHECKLIST_ITEMS.filter(i => checkedIds.has(i.id)).length;
+  document.getElementById('totalProgressText').textContent = p + '%';
+  document.getElementById('totalProgressBar').style.width = p + '%';
+  document.getElementById('totalDoneCount').textContent = d;
+  document.getElementById('totalCount').textContent = CHECKLIST_ITEMS.length;
+}
+function toggleItem(id) { if (checkedIds.has(id)) checkedIds.delete(id); else checkedIds.add(id); saveState(); renderTabContent(); renderOverallProgress(); renderTabBar(); checkCelebration(); }
+function clearTab() { getTabItems(activeTab).forEach(i => checkedIds.delete(i.id)); saveState(); renderTabContent(); renderOverallProgress(); renderTabBar(); }
+function switchTab(k) { activeTab = k; renderTabBar(); renderTabContent(); }
+let celebrationTimer = null;
+function checkCelebration() { if (isTabComplete(activeTab)) showCelebration(); }
+function showCelebration() {
+  const el = document.getElementById('celebration');
+  el.classList.remove('hidden', 'hide');
+  el.querySelector('div').classList.remove('hide');
+  el.querySelector('div').classList.add('celebration');
+  if (celebrationTimer) clearTimeout(celebrationTimer);
+  celebrationTimer = setTimeout(() => {
+    const inner = el.querySelector('div');
+    inner.classList.remove('celebration'); inner.classList.add('hide');
+    setTimeout(() => { el.classList.add('hidden'); }, 300);
+  }, 2500);
+}
+renderTabBar(); renderTabContent(); renderOverallProgress();
+</script>
+</body>
+</html>
